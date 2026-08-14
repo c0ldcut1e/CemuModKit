@@ -10,7 +10,8 @@ Overlay::Overlay()
 {
     IMGUI_CHECKVERSION();
 
-    ImguiInit(m_overlayContext, false, true, ImGui_ImplGX2_BufferingType::SINGLE_BUFFERING, nullptr, SD_CARD_PATH "/font.ttf");
+    ImguiInit(m_overlayContext, false, true, ImGui_ImplGX2_BufferingType::SINGLE_BUFFERING, SD_CARD_PATH "/imgui.ini",
+              nullptr /* Change this to the path of a font file to use a custom font */);
 }
 
 Overlay::~Overlay() { ImguiShutdown(m_overlayContext); }
