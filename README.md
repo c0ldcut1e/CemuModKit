@@ -17,6 +17,7 @@ The options for `DEBUG_LEVEL` are:
 - OFF
 - ON
 - VERBOSE
+
 by default, it is `OFF`.
 To use `ON` for example, the command would be this instead:
 ```
