@@ -94,7 +94,8 @@ target_link_directories(${TARGET} PRIVATE
     "${DEVKITPRO}/libogc/lib/wii"
     "${PORTLIBS}/lib")
 
-target_link_libraries(${TARGET} PRIVATE z vorbisidec ogg)
+# Link libraries here if needed, currently contains zlib
+# target_link_libraries(${TARGET} PRIVATE z)
 
 target_link_options(${TARGET} PRIVATE
     -n -T "${CMAKE_SOURCE_DIR}/link.ld"
