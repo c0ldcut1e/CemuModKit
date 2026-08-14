@@ -27,3 +27,4 @@ cmake -S . -B build -G Ninja -DDEBUG_LEVEL=ON
 cmake --build build
 ```
 This builds the `.elf` file and generates the graphic pack assembly using the `gen_patch.py` file.
+Optionally, if `capstone` is installed via `pip`, the `gen_patch.py` script will generate disasembly comments in the graphic pack assembly.

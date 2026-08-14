@@ -307,7 +307,7 @@ def load_text_instructions(
         code_size = len(text_section)
     code_bytes = text_section[:code_size]
 
-    md = Cs(CS_ARCH_PPC, CS_MODE_32 | CS_MODE_BIG_ENDIAN)
+    md = Cs(CS_ARCH_PPC, CS_MODE_32 | CS_MODE_BIG_ENDIAN)  # type: ignore
     instructions: list[TextInstruction] = []
     for insn in md.disasm(code_bytes, text_start):
         asm = normalize_instruction_text(f"{insn.mnemonic} {insn.op_str}".strip())
