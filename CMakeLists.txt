@@ -16,11 +16,8 @@ set(CMAKE_SYSTEM_PROCESSOR powerpc)
 
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
-# Pass the object list to the linker via a response file so a failed link prints
-# "@objects.rsp" instead of ~400 object paths, keeping linker errors readable.
 set(CMAKE_CXX_USE_RESPONSE_FILE_FOR_OBJECTS 1)
 set(CMAKE_C_USE_RESPONSE_FILE_FOR_OBJECTS   1)
-set(CMAKE_NINJA_FORCE_RESPONSE_FILE ON CACHE INTERNAL "")
 
 set(_prefix "${DEVKITPPC}/bin/powerpc-eabi-")
 set(CMAKE_C_COMPILER   "${_prefix}gcc")
