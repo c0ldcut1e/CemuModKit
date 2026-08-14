@@ -1,0 +1,51 @@
+#include "cut_clock.h"
+#include "../coreinit/systeminfo.h"
+#include "../coreinit/time.h"
+#include "cut_newlib.h"
+
+int __cut_clock_gettime(clockid_t clock_id, struct timespec *tp)
+{
+    if (clock_id == CLOCK_MONOTONIC)
+    {
+        OSTime time = OSGetSystemTime();
+        tp->tv_sec  = (time_t) OSTicksToSeconds(time);
+
+        time -= OSSecondsToTicks(tp->tv_sec);
+        tp->tv_nsec = (long) OSTicksToNanoseconds(time);
+    }
+    else if (clock_id == CLOCK_REALTIME)
+    {
+        OSTime time = OSGetTime();
+        tp->tv_sec  = (time_t) OSTicksToSeconds(time);
+
+        time -= OSSecondsToTicks(tp->tv_sec);
+        tp->tv_nsec = (long) OSTicksToNanoseconds(time);
+
+        tp->tv_sec += EPOCH_DIFF_SECS(WIIU_OSTIME_EPOCH_YEAR);
+    }
+    else
+    {
+        return EINVAL;
+    }
+
+    return 0;
+}
+
+int __cut_clock_settime(clockid_t clock_id, const struct timespec *tp)
+{
+    (void) clock_id;
+    (void) tp;
+    return EPERM;
+}
+
+int __cut_clock_getres(clockid_t clock_id, struct timespec *res)
+{
+    if (clock_id != CLOCK_MONOTONIC && clock_id != CLOCK_REALTIME)
+    {
+        return EINVAL;
+    }
+
+    res->tv_sec  = 0;
+    res->tv_nsec = (long) ((1000000000ull + (uint64_t) OSTimerClockSpeed) / (uint64_t) OSTimerClockSpeed);
+    return 0;
+}

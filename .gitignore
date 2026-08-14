@@ -1,0 +1,5 @@
+*.elf
+GraphicPack/patch_*
+build
+.vscode
+.clang-format
