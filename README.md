@@ -5,8 +5,8 @@ Cemu Mod Kit comes with a small port of [wut](https://github.com/devkitPro/wut/)
 
 ## Compiling the graphic pack
 
-To compile the graphic pack, the `CMakeLists.txt` can be used.
-It is recommended to use `Ninja`.
+To compile the graphic pack, `DevkitPPC` is needed.
+It is recommended to use `Ninja` with the `CMakeLists.txt`.
 
 1. Configure the project:
 ```
