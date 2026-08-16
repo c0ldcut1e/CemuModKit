@@ -75,24 +75,17 @@ target_compile_definitions(${TARGET} PRIVATE
 set(_gcc_dir "${DEVKITPPC}/lib/gcc/powerpc-eabi/${CMAKE_C_COMPILER_VERSION}")
 
 target_include_directories(${TARGET} PRIVATE
+    "${CMAKE_SOURCE_DIR}/include"
     "${CMAKE_SOURCE_DIR}/src"
     "${CMAKE_SOURCE_DIR}/src/cut"
-    "${CMAKE_SOURCE_DIR}/src/lib/mc")
-
-target_include_directories(${TARGET} SYSTEM PRIVATE
     "${CMAKE_SOURCE_DIR}/src/lib"
+
     "${DEVKITPRO}/wut/include"
     "${DEVKITPRO}/libogc/include"
-    "${DEVKITPPC}/lib/include"
+    "${DEVKITPRO}/lib/include"
     "${_gcc_dir}/include"
     "${PORTLIBS}/include"
-    "${PORTLIBS}/include/freetype2")
-
-target_link_directories(${TARGET} PRIVATE
-    "${DEVKITPPC}/lib"
-    "${_gcc_dir}/lib"
-    "${DEVKITPRO}/libogc/lib/wii"
-    "${PORTLIBS}/lib")
+)
 
 # Link libraries here if needed, currently contains zlib
 # target_link_libraries(${TARGET} PRIVATE z)
